@@ -11,6 +11,9 @@
 	        Site Ace
 	      </a>
 	    </div>
+      <div class="login">
+          {{> loginButtons}}
+      </div>
 	  </div>
 	</nav>
 
@@ -20,11 +23,13 @@
 	</div>
 </body>
 
-
 <template name="website_form">
+  <!--Only allow users that are logged in to add a new link-->
+  {{#if currentUser}}
 	<a class="btn btn-default js-toggle-website-form" href="#">
   		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
+  {{/if}}
 	<div id="website_form" class="hidden_div">
 		<form class="js-save-website-form">
 		  <div class="form-group">
@@ -44,6 +49,7 @@
 		</form>
 	</div>
 </template>
+
 
 <!-- template that displays several website items -->
 <template name="website_list">
