@@ -49,9 +49,22 @@ if (Meteor.isClient) {
 
 			// here is an example of how to get the url out of the form:
 			var url = event.target.url.value;
+      var desc = event.target.description.value;
+      var title = event.target.title.value;
 			console.log("The url they entered is: "+url);
+      console.log("The description they entered is: "+desc);
+      console.log("The description they entered is: "+title);
 			
-			//  put your website saving code in here!	
+			//  put your website saving code in here!
+
+      if(Meteor.user()){
+        Websites.insert({
+          title:title,
+          url:url,
+          description:desc,
+          createdOn:new Date()
+        });
+      }
 
 			return false;// stop the form submit from reloading the page
 
